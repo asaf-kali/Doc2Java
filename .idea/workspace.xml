@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="63e1cfd4-99c6-482f-bb42-5bb61eb1b9a4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/doc2java/main/D2JArgs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doc2java/main/D2JArgs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/doc2java/main/Doc2Java.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doc2java/main/Doc2Java.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/doc2java/main/File.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doc2java/main/File.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/doc2java/main/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doc2java/main/Log.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/doc2java/struct/Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doc2java/struct/Class.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/doc2java/struct/Package.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doc2java/struct/Package.java" afterDir="false" />
-    </list>
+    <list default="true" id="63e1cfd4-99c6-482f-bb42-5bb61eb1b9a4" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,17 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Package.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/doc2java/struct/Package.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -140,20 +122,6 @@
               <item name="Doc2Java" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="doc2java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Doc2Java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Doc2Java" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="doc2java" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Doc2Java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Doc2Java" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="doc2java" type="462c0819:PsiDirectoryNode" />
-              <item name="struct" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Doc2Java" type="b2602c69:ProjectViewProjectNode" />
@@ -293,16 +261,15 @@
       <updated>1526046166688</updated>
       <workItem from="1526046168516" duration="1463000" />
       <workItem from="1526047702222" duration="6151000" />
-      <workItem from="1526066620038" duration="12672000" />
+      <workItem from="1526066620038" duration="13315000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20286000" />
+    <option name="totallyTimeSpent" value="20929000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -314,11 +281,11 @@
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3297414" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3297414" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3297414" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1369936" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1369936" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
