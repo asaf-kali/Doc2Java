@@ -1,23 +1,22 @@
 package doc2java.main;
 
-import org.apache.commons.io.FilenameUtils;
-import sun.plugin2.gluegen.runtime.CPU;
-
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Logger;
+
+import static doc2java.main.Log.prm;
 
 class D2JArgs {
 
 	private static final int FIRST = 0;
 	private static final int SECOND = 1;
 
-	List<File> paths;
+	List<File> files;
 	File outDir;
 	final boolean parseSuccess;
 
 	D2JArgs(String[] args) {
-		paths = new LinkedList<>();
+		files = new LinkedList<>();
 		parseSuccess = parseArgs(args);
 	}
 
@@ -28,58 +27,70 @@ class D2JArgs {
 		if (length < Constants.MIN_ARGS)
 			return false;
 		// Single argument case
-		if (length == Constants.MIN_ARGS) {
-			File srcDir = new File(args[FIRST]);
-			if (!extractHtmlFiles(srcDir))
-				return false;
-			outDir = new File(srcDir, Constants.DEFAULT_OUT_DIR);
-			if (outDir.exists()) {
-				// TODO: Log write into existing directory
-			} else {
-				// TODO: Log mkdir
-				if (!outDir.mkdir()) {
-					System.out.println(Messages.MKDIR_FAIL + outDir.getAbsolutePath());
-					return false;
-				}
-			}
-			return true;
-		}
+		if (length == Constants.MIN_ARGS)
+			return parse1(args[FIRST]);
 		// Two arguments case
-		if (length == Constants.TWO_ARGS) {
-			File srcDir = new File(args[FIRST]);
-			if (!extractHtmlFiles(srcDir))
-				return false;
-			outDir = new File(args[SECOND]);
-			if (!outDir.exists()) {
-				System.out.println(Messages.PATH_EXIST_ERR + outDir.getAbsolutePath());
+		if (length == Constants.TWO_ARGS)
+			return parse2(args[FIRST], args[SECOND]);
+		// TODO: Complete third case with file list
+		return true;
+	}
+
+	private boolean parse1(String srcPath) {
+		File srcDir = new File(srcPath);
+		if (!extractHtmlFiles(srcDir))
+			return false;
+		outDir = new File(srcDir, Constants.DEFAULT_OUT_DIR);
+		if (!outDir.exists()) {
+			Log.info("Creating output directory");
+			if (!outDir.mkdir()) {
+				Log.severe(Messages.MKDIR_FAIL + outDir.getAbsolutePath());
 				return false;
 			}
-			return true;
+		} else Log.info("Output directory already exists");
+		return true;
+	}
+
+	private boolean parse2(String srcPath, String outPath) {
+		File srcDir = new File(srcPath);
+		if (!extractHtmlFiles(srcDir))
+			return false;
+		outDir = new File(outPath);
+		if (!outDir.exists()) {
+			Log.severe(Messages.PATH_EXIST_ERR + outDir.getAbsolutePath());
+			return false;
 		}
 		return true;
 	}
 
 	private boolean extractHtmlFiles(File srcDir) {
-		if (!srcDir.exists() || !srcDir.isDirectory())
+		if (!srcDir.exists()) {
+			Log.severe(Messages.PATH_EXIST_ERR + srcDir.getAbsolutePath());
 			return false;
-		filterHtmlFiles(srcDir.listFiles());
+		}
+		if (!srcDir.isDirectory()) {
+			Log.severe(Messages.PATH_NOT_DIR + srcDir.getAbsolutePath());
+			return false;
+		}
+		Collection<File> files = File.fromArray(srcDir.listFiles());
+		filterHtmlFiles(files);
 		return true;
 	}
 
-	private void filterHtmlFiles(File[] files) {
-		Logger.getGlobal().info("Filter");
+	private void filterHtmlFiles(Collection<File> files) {
+		Log.info("Filtering from " + prm(files.size()) + " files");
 		for (File file : files) {
 			if (!file.exists()) {
-				Logger.getGlobal().info("File " + file + " does not exists");
+				Log.info("File " + prm(file) + " does not exists, ignoring");
 				continue;
 			}
 			if (!file.getExtension().equals(Constants.HTML_EXTENSION)) {
-				Logger.getGlobal().info("File " + file + " is not HTML file, ignoring");
+				Log.info("File " + prm(file) + " is not HTML file, ignoring");
 				continue;
 			}
-			htmlPaths.add(path);
+			this.files.add(file);
 		}
-		return htmlPaths;
+		Log.info("Filtered list size is " + prm(files.size()));
 	}
 
 }

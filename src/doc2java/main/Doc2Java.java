@@ -9,7 +9,6 @@ public class Doc2Java {
 			System.out.println(Messages.ARGS_ERR);
 			return;
 		}
-		System.out.println("dudi");
 	}
 
 }

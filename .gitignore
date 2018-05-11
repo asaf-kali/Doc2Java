@@ -1,5 +1,11 @@
 *.class
 
+# Log files
+*.log
+
+# Out folder
+out/
+
 # BlueJ files
 *.ctxt
 
