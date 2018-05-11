@@ -1,3 +1,5 @@
+package doc2java.struct;
+
 /**
  *
  */

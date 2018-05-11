@@ -1,3 +1,5 @@
+package doc2java.struct;
+
 import java.lang.reflect.Type;
 
 /**
@@ -8,6 +10,7 @@ public class Member {
 	AccessModifier accessModifier;
 	boolean isStatic;
 	boolean isFinal;
+	boolean isAbstract;
 	Type type;
 	String name;
 	Javadoc javadoc;
