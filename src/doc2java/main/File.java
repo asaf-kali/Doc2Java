@@ -18,21 +18,23 @@ public class File extends java.io.File {
 	}
 
 	public String getExtension() {
-		// TODO: Check if this is .getName()
+		return FilenameUtils.getExtension(getFullPath());
+	}
+
+	public String getFullPath() {
 		String fileName;
 		try {
 			fileName = this.getCanonicalPath();
 		} catch (Exception e) {
 			fileName = this.getPath();
 		}
-		return FilenameUtils.getExtension(fileName);
+		return fileName;
 	}
 
 	public static Collection<File> fromArray(java.io.File[] files) {
 		List<File> list = new ArrayList<>(files.length);
-		for (java.io.File file : files) {
+		for (java.io.File file : files)
 			list.add(new File(file.getAbsolutePath()));
-		}
 		return list;
 	}
 }

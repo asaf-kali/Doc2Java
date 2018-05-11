@@ -18,6 +18,8 @@ class D2JArgs {
 	D2JArgs(String[] args) {
 		files = new LinkedList<>();
 		parseSuccess = parseArgs(args);
+		if (parseSuccess)
+			Log.fine("Finished parsing successfully.");
 	}
 
 	private boolean parseArgs(String[] args) {
@@ -28,15 +30,15 @@ class D2JArgs {
 			return false;
 		// Single argument case
 		if (length == Constants.MIN_ARGS)
-			return parse1(args[FIRST]);
+			return parse1arg(args[FIRST]);
 		// Two arguments case
 		if (length == Constants.TWO_ARGS)
-			return parse2(args[FIRST], args[SECOND]);
+			return parse2args(args[FIRST], args[SECOND]);
 		// TODO: Complete third case with file list
 		return true;
 	}
 
-	private boolean parse1(String srcPath) {
+	private boolean parse1arg(String srcPath) {
 		File srcDir = new File(srcPath);
 		if (!extractHtmlFiles(srcDir))
 			return false;
@@ -51,7 +53,7 @@ class D2JArgs {
 		return true;
 	}
 
-	private boolean parse2(String srcPath, String outPath) {
+	private boolean parse2args(String srcPath, String outPath) {
 		File srcDir = new File(srcPath);
 		if (!extractHtmlFiles(srcDir))
 			return false;
@@ -78,19 +80,19 @@ class D2JArgs {
 	}
 
 	private void filterHtmlFiles(Collection<File> files) {
-		Log.info("Filtering from " + prm(files.size()) + " files");
+		Log.fine("Filtering files from collection size " + prm(files.size()));
 		for (File file : files) {
 			if (!file.exists()) {
-				Log.info("File " + prm(file) + " does not exists, ignoring");
+				Log.finest("File " + prm(file) + " does not exists, ignoring");
 				continue;
 			}
 			if (!file.getExtension().equals(Constants.HTML_EXTENSION)) {
-				Log.info("File " + prm(file) + " is not HTML file, ignoring");
+				Log.finest("File " + prm(file) + " is not an HTML file, ignoring");
 				continue;
 			}
 			this.files.add(file);
 		}
-		Log.info("Filtered list size is " + prm(files.size()));
+		Log.fine("Filtered list size is " + prm(this.files.size()));
 	}
 
 }

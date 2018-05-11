@@ -9,6 +9,8 @@ class Log {
 	private static final String LOG_NAME = "doc2java";
 	private static final String LOG_DIR = "logs/";
 	private static final String LOG_EXT = ".log";
+	private static final Level CONSOLE_LEVEL = Level.ALL;
+	private static final Level FILE_LEVEL = Level.ALL;
 
 	private static boolean validateLogDir() {
 		File logDir = new File("./" + LOG_DIR);
@@ -29,7 +31,7 @@ class Log {
 		// Console Handler
 		ConsoleHandler ch = new ConsoleHandler();
 		ch.setFormatter(new ConsoleFormatter());
-		ch.setLevel(Level.WARNING);
+		ch.setLevel(CONSOLE_LEVEL);
 		logger.addHandler(ch);
 
 		// File Handler
@@ -40,14 +42,16 @@ class Log {
 		try {
 			String fileName = getLogName();
 			Handler fh = new FileHandler(fileName);
-			fh.setLevel(Level.ALL);
+			fh.setLevel(FILE_LEVEL);
 			logger.addHandler(fh);
-			info("Log file " + prm(fileName) + " created successfully");
+			finer("Log file " + prm(fileName) + " created successfully");
 		} catch (IOException e) {
 			warning("Failed to create FileHandler to logger: " + e.getMessage());
 		}
 		System.out.println();
 	}
+
+	/* --- Logging facade --- */
 
 	static void info(String msg) {
 		log(Level.INFO, msg);
@@ -73,12 +77,12 @@ class Log {
 		log(Level.FINEST, msg);
 	}
 
-	static String prm(Object obj) {
-		return "[" + obj + "]";
+	static void log(Level level, String msg) {
+		logger.log(level, msg);
 	}
 
-	private static void log(Level level, String msg) {
-		logger.log(level, msg);
+	static String prm(Object obj) {
+		return "[" + obj + "]";
 	}
 
 	private static class ConsoleFormatter extends Formatter {

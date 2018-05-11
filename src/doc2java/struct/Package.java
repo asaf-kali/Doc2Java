@@ -1,9 +1,9 @@
 package doc2java.struct;
 
-import java.util.List;
+import java.util.Collection;
 
 public class Package {
 	Package parent;
-	List<Package> chlidren;
+	Collection<Package> chlidren;
 	String name;
 }

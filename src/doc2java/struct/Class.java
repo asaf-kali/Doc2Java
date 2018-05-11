@@ -1,5 +1,6 @@
 package doc2java.struct;
 
+import doc2java.main.File;
 import org.jsoup.nodes.Document;
 
 import java.util.LinkedList;
@@ -9,10 +10,15 @@ public class Class {
 
 	List<Member> members;
 	Javadoc javadoc;
+	Package pack;
 
 	public Class() {
 		this.members = new LinkedList<>();
 		this.javadoc = new Javadoc();
+	}
+
+	public Class(File file) {
+		this(file.getFullPath());
 	}
 
 	public Class(String fileName) {
@@ -21,7 +27,6 @@ public class Class {
 
 	public Class(Document document) {
 		this();
-
 	}
 
 	public String toFile() {
