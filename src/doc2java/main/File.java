@@ -22,7 +22,7 @@ public class File extends java.io.File {
 	}
 
 	public String getFullPath() {
-		String fileName;
+		String fileName ;
 		try {
 			fileName = this.getCanonicalPath();
 		} catch (Exception e) {
