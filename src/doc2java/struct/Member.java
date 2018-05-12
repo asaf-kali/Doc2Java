@@ -8,9 +8,9 @@ import java.lang.reflect.Type;
 public class Member {
 
 	AccessModifier accessModifier;
+	boolean isAbstract;
 	boolean isStatic;
 	boolean isFinal;
-	boolean isAbstract;
 	Type type;
 	String name;
 	Javadoc javadoc;

@@ -3,12 +3,15 @@ package doc2java.struct;
 import doc2java.main.File;
 import org.jsoup.nodes.Document;
 
+import java.io.IOException;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Class {
 
-	List<Member> members;
+	Collection<Member> members;
+	Collection<Class> subClasses;
 	Javadoc javadoc;
 	Package pack;
 
@@ -29,7 +32,7 @@ public class Class {
 		this();
 	}
 
-	public String toFile() {
+	public String toFile(File outFolder) throws IOException {
 		String file = "";
 
 		return file;

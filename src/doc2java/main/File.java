@@ -26,7 +26,7 @@ public class File extends java.io.File {
 		try {
 			fileName = this.getCanonicalPath();
 		} catch (Exception e) {
-			fileName = this.getPath();
+			fileName = this.getAbsolutePath();
 		}
 		return fileName;
 	}
