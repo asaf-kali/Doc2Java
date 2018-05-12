@@ -39,7 +39,7 @@ public class Doc2Java {
 		int saveCount = 0;
 		for (Class cls : classes) {
 			try {
-				cls.toFile(outDir);
+				cls.saveUnder(outDir);
 				saveCount++;
 			} catch (IOException e) {
 				Log.warning("Failed saving class " + prm(cls) + e.getMessage());

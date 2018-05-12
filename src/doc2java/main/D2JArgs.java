@@ -1,5 +1,6 @@
 package doc2java.main;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,12 +9,18 @@ import static doc2java.main.Log.prm;
 
 class D2JArgs {
 
+	/* --- Constants --- */
+
 	private static final int FIRST = 0;
 	private static final int SECOND = 1;
+
+	/* --- Fields --- */
 
 	List<File> files;
 	File outDir;
 	final boolean parseSuccess;
+
+	/* --- Constructors --- */
 
 	D2JArgs(String[] args) {
 		files = new LinkedList<>();
@@ -21,6 +28,8 @@ class D2JArgs {
 		if (parseSuccess)
 			Log.fine("Finished parsing successfully.");
 	}
+
+	/* --- Methods --- */
 
 	private boolean parseArgs(String[] args) {
 		if (args == null)
@@ -66,12 +75,10 @@ class D2JArgs {
 	}
 
 	private boolean extractHtmlFiles(File srcDir) {
-		if (!srcDir.exists()) {
-			Log.severe(Messages.PATH_EXIST_ERR + srcDir.getAbsolutePath());
-			return false;
-		}
-		if (!srcDir.isDirectory()) {
-			Log.severe(Messages.PATH_NOT_DIR + srcDir.getAbsolutePath());
+		try {
+			srcDir.validateIsDir();
+		} catch (IOException e) {
+			Log.severe("Failed reading files from source directory. " + e.getMessage());
 			return false;
 		}
 		Collection<File> files = File.fromArray(srcDir.listFiles());

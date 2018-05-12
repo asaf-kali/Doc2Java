@@ -13,7 +13,9 @@ public class Utils {
 
 enum DateFormat {
 
-	FileName("YYYY-MM-dd HH.mm.ss"), Log("YYYY-MM-dd HH:mm:ss");
+	FileName("YYYY-MM-dd HH.mm.ss"),
+	Log("YYYY-MM-dd HH:mm:ss"),
+	Presentable("MM-dd-YYYY HH:mm:ss");
 
 	private final String format;
 
