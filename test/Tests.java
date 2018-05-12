@@ -1,9 +1,14 @@
 import doc2java.main.Doc2Java;
+import doc2java.main.File;
 import doc2java.struct.Class;
 import doc2java.struct.Package;
 import org.junit.Test;
 
+import java.io.IOException;
+
 public class Tests {
+
+	/* --- Constants --- */
 
 	private static final String cwd = System.getProperty("user.dir") + "\\";
 	private static final String test_resource = cwd + "test_resource\\";
@@ -11,6 +16,7 @@ public class Tests {
 
 	private static final String example1 = "example 1\\";
 
+	/* --- Tests --- */
 
 	@Test
 	public void test1() {
@@ -19,7 +25,14 @@ public class Tests {
 	}
 
 	@Test
-	public void test2() {
+	public void fileSaved() throws IOException {
+		Class cls = new Class();
+		cls.setName("test");
+		cls.saveUnder(new File(test_result + example1));
+	}
+
+	@Test
+	public void packageStructure() throws IOException {
 		Package parent, project, child, brother;
 		project = new Package("project");
 		parent = new Package("parent");
@@ -28,8 +41,7 @@ public class Tests {
 		parent.addChild(project);
 		project.addChild(child);
 		brother.setParent(parent);
-		Class cls = new Class();
-
+		project.generateHierarchy(new File(test_result));
 	}
 
 }

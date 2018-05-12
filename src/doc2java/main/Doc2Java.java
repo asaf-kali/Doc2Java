@@ -47,4 +47,5 @@ public class Doc2Java {
 		}
 		Log.info("Saved " + prm(saveCount) + " file(s) out of " + prm(classes.size()));
 	}
+
 }
